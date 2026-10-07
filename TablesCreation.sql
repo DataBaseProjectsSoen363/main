@@ -166,4 +166,3 @@ CREATE TABLE surgical_procedure (
 
 COMMIT;
 
-ROLLBACK;
