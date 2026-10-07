@@ -9,11 +9,10 @@ CREATE TABLE icd9_dict (
 );
 
 -- 2. Physicians
-CREATE TABLE Physicians (
-    Physician_ID INT PRIMARY KEY,
-    First_Name VARCHAR(50),
-    Last_Name VARCHAR(50),
-    Specialty VARCHAR(100)
+CREATE TABLE physician (
+    physician_ID INT PRIMARY KEY,
+    name VARCHAR(50),
+    specialty VARCHAR(100)
 );
 
 -- 3. Nurses
