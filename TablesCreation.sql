@@ -8,7 +8,7 @@ CREATE TABLE icd9_dict (
     disease_category VARCHAR(150)
 );
 
--- 2. Physicians
+-- 2. physician
 CREATE TABLE physician (
     physician_ID INT PRIMARY KEY,
     name VARCHAR(50),
@@ -45,7 +45,7 @@ CREATE TABLE admission (
     reason_admission TEXT,
     insurance_information VARCHAR(100),
     current_condition TEXT,
-    admitting_professional_id INT REFERENCES Physicians(physician_id)
+    admitting_professional_id INT REFERENCES physician(physician_id)
 );
 
 -- 6. Triage Assessment
@@ -74,14 +74,14 @@ CREATE TABLE diagnosis (
     diagnosis_date_time TIMESTAMP NOT NULL,
     primary_diagnosis BOOLEAN DEFAULT FALSE,
     secondary_diagnosis BOOLEAN DEFAULT FALSE,
-    diagnosing_physician_id INT REFERENCES Physicians(physician_id)
+    diagnosing_physician_id INT REFERENCES physician(physician_id)
 );
 
 -- 8. ICU / CCU Stay
 CREATE TABLE icu_stay (
     unit_stay_id INT PRIMARY KEY,
     admission_id INT REFERENCES admission(admission_id),
-    responsible_physician_id INT REFERENCES Physicians(physician_id),
+    responsible_physician_id INT REFERENCES physician(physician_id),
     unit_type VARCHAR(50) NOT NULL,
     room_number VARCHAR(20),
     bed_number VARCHAR(20),
@@ -94,7 +94,7 @@ CREATE TABLE icu_stay (
 CREATE TABLE clinical_note (
     note_id INT PRIMARY KEY,
     admission_id INT REFERENCES admission(admission_id),
-    physician_id INT REFERENCES Physicians(physician_id),
+    physician_id INT REFERENCES physician(physician_id),
     type VARCHAR(50),
     creation_date TIMESTAMP NOT NULL,
     patient_symptoms TEXT,
@@ -110,7 +110,7 @@ CREATE TABLE diagnostic_order (
     order_id INT PRIMARY KEY,
     admission_id INT REFERENCES admission(admission_id),
     patient_id INT REFERENCES patient(patient_id),
-    requesting_physician_id INT REFERENCES Physicians(physician_id),
+    requesting_physician_id INT REFERENCES physician(physician_id),
     requested_examination VARCHAR(150),
     request_date_time TIMESTAMP,
     clinical_reason_examination TEXT,
@@ -125,7 +125,7 @@ CREATE TABLE radiology_examination (
     examination_type VARCHAR(100),
     examination_date_time TIMESTAMP,
     body_area_examined VARCHAR(100),
-    referring_physician_id INT REFERENCES Physicians(physician_id),
+    referring_physician_id INT REFERENCES physician(physician_id),
     radiology_technician VARCHAR(100),
     examination_status VARCHAR(50),
     medical_images TEXT
@@ -149,7 +149,7 @@ CREATE TABLE discharge_record (
     discharge_status VARCHAR(20) NOT NULL DEFAULT 'Discharged',
     followup_instructions TEXT,
     followup_appointments TEXT,
-    responsible_physician INT REFERENCES Physicians(physician_id)
+    responsible_physician INT REFERENCES physician(physician_id)
 );
 
 -- 14. Surgical Procedure 
@@ -160,7 +160,7 @@ CREATE TABLE surgical_procedure (
     procedure_name VARCHAR(150) NOT NULL,
     body_site VARCHAR(100),
     procedure_date_time TIMESTAMP NOT NULL,
-    surgeon_id INT REFERENCES Physicians(physician_id)
+    surgeon_id INT REFERENCES physician(physician_id)
 );
 
 COMMIT;
