@@ -7,7 +7,7 @@ INSERT INTO icd9_dict (icd9_code, official_diagnosis_title, description, disease
 INSERT INTO icd9_dict (icd9_code, official_diagnosis_title, description, disease_category) VALUES ('250.00', 'Diabetes mellitus without complication', 'Type II or unspecified diabetes managed stably.', 'Endocrine/Metabolic');
 INSERT INTO icd9_dict (icd9_code, official_diagnosis_title, description, disease_category) VALUES ('272.4', 'Other and unspecified hyperlipidemia', 'Elevated cholesterol and lipids.', 'Endocrine/Metabolic');
 
--- 2. Physicians
+-- 2. Physician
 INSERT INTO physician (physician_id, name) VALUES (1, 'Dr. Amelie Smith');
 INSERT INTO physician (physician_id, name) VALUES (2, 'Dr. Daniel Tremblay');
 INSERT INTO physician (physician_id, name) VALUES (3, 'Dr. Daniel Charette');
@@ -456,6 +456,8 @@ INSERT INTO triage_assessment (triage_id, admission_id, nurse_id, blood_pressure
 INSERT INTO diagnosis (diagnosis_id, patient_id, admission_id, icd9_code, diagnosis_date_time, primary_diagnosis, secondary_diagnosis, diagnosing_physician_id) VALUES (73, 20, 50, '250.00', '2026-05-21 18:06:01', TRUE, FALSE, 8);
 INSERT INTO clinical_note (note_id, admission_id, physician_id, type, creation_date, patient_symptoms, initial_treatment) VALUES (50, 50, 8, 'Progress Note', '2026-05-21 18:06:01', 'Patient shows clear signs of improvement following initial recovery procedures.', 'Oxygen therapy administered.');
 INSERT INTO discharge_record (discharge_record_id, admission_id, discharge_date_time, discharge_destination, condition_at_discharge, responsible_physician) VALUES (50, 50, '2026-05-22 18:06:01', 'Home', 'Fully Recovered', 8);
+
+-- 6 Surgical_procedure insertion values
 
 INSERT INTO surgical_procedure (procedure_id, admission_id, patient_id, procedure_name, body_site, procedure_date_time, surgeon_id)
 VALUES
