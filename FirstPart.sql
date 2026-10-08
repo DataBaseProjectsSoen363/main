@@ -109,7 +109,7 @@ SELECT
     p.name ,                                 
     a.admission_id,
     d.discharge_date_time,              
-    dg.icd9_code,                      
+    dg.icd9_code                    
 FROM admission a
 JOIN patient           p  ON p.patient_id       = a.patient_id
 JOIN discharge_record  d  ON d.admission_id     = a.admission_id
