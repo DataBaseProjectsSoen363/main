@@ -1,6 +1,23 @@
 -- Complete PostgreSQL Population Script
 BEGIN;
 
+TRUNCATE TABLE
+    surgical_procedure,
+    discharge_record,
+    radiology_report,
+    radiology_examination,
+    diagnostic_order,
+    clinical_note,
+    icu_stay,
+    diagnosis,
+    triage_assessment,
+    admission,
+    patient,
+    nurse,
+    physician,
+    icd9_dict
+RESTART IDENTITY CASCADE;
+
 -- 1. ICD-9 Dictionary
 INSERT INTO icd9_dict (icd9_code, official_diagnosis_title, description, disease_category) VALUES ('401.9', 'Unspecified essential hypertension', 'High blood pressure with no specific cause.', 'Circulatory System');
 INSERT INTO icd9_dict (icd9_code, official_diagnosis_title, description, disease_category) VALUES ('410.9', 'Acute myocardial infarction, unspecified site', 'Heart attack occurring in an unspecified heart region.', 'Circulatory System');
